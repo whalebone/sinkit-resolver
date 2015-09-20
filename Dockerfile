@@ -2,7 +2,7 @@ FROM fedora:22
 MAINTAINER Michal Karm Babacek <karm@redhat.com>
 #LABEL description="Codename Feed: Sinkit Recursive Resolver"
 # TODO: Optimize this out. GO build tool chain is too heavy.
-ENV DEPS            unbound go supervisor wget unzip git
+ENV DEPS            unbound go supervisor wget unzip git wget
 ENV GODNS_TAG       playground
 ENV GOPATH          /home/sinkit/go
 RUN dnf -y update && dnf -y install ${DEPS} && dnf clean all
@@ -27,6 +27,7 @@ RUN setcap 'cap_net_bind_service=+ep' /home/sinkit/godns
 
 # Unbound
 ADD unbound.conf /etc/unbound/unbound.conf
+RUN wget -O /etc/unbound/named.cache ftp://ftp.internic.net./domain/named.cache
 
 # Supervisor
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
