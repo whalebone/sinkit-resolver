@@ -1,5 +1,5 @@
 FROM fedora:22
-MAINTAINER Michal Karm Babacek <karm@redhat.com>
+MAINTAINER Michal Karm Babacek <karm@email.cz>
 #LABEL description="Codename Feed: Sinkit Recursive Resolver"
 # TODO: Optimize this out. GO build tool chain is too heavy.
 ENV DEPS            unbound go supervisor wget unzip git wget
