@@ -16,16 +16,22 @@ USER sinkit
 
 # GoDNS
 RUN go get ${GODNS_REPO} && \
+    echo "Got GoDNS." && \
     cd ${GOPATH}/src/${GODNS_REPO}/ && \
     git checkout ${GODNS_TAG} && \
+    echo "Switched to tag ${GODNS_TAG}." && \
     go build && \
+    echo "Built GoDNS." && \
     cp godns /home/sinkit/ && \
+    ls -lah ./ && \
     cd /home/sinkit/ && \
+    ls -lah ./ && \
     rm -rf ${GOPATH}
 ADD godns.conf /home/sinkit/godns.conf
 
 USER root
 
+RUN ls -lah /home/sinkit/
 RUN setcap 'cap_net_bind_service=+ep' /home/sinkit/godns
 
 # Unbound
