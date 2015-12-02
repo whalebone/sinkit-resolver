@@ -4,7 +4,7 @@ MAINTAINER Michal Karm Babacek <karm@email.cz>
 # TODO: Optimize this out. GO build tool chain is too heavy.
 ENV DEPS            unbound go supervisor wget unzip git wget
 #ENV GODNS_TAG      playground
-ENV GODNS_TAG       logging-disabled-core
+ENV GODNS_TAG       validating-queries
 #ENV GODNS_REPO     github.com/intfeed/godns
 ENV GODNS_REPO      github.com/Karm/godns
 ENV GOPATH          /home/sinkit/go
